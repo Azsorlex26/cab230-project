@@ -17,7 +17,6 @@
         </form>
     </div>
 
-
     <!--search based on suburb(drop down menu)-->
     <div class="suburbs">
         <button class="suburbButton">Choose A Suburb</button>
@@ -31,7 +30,6 @@
     </div>
 
     <!--a rating-->
-
     <div class="ratings">
         <button class="ratingButton">Choose A Rating</button>
         <div class="dropdownRatings">
@@ -44,7 +42,6 @@
     </div>
 
     <!--geolocation-->
-
     <form>
         <input class="geoButton" type="button" value="Search Location" onclick="window.location.href='searchResults.php'" />
     </form>

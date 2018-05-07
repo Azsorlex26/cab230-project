@@ -14,8 +14,7 @@
     function review($title, $review) {
         echo '<div class="review">';
         echo "<h3>$title</h3>";
-        echo "<p>$review</p>";
-        echo '</p></div>';
+        echo "<p>$review</p></div>";
     }
 
     include 'navBar.php';

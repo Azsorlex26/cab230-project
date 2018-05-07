@@ -19,10 +19,7 @@
     
     include 'navBar.php';
 
-    echo '<form>';
-    echo '<div class="containerLogin">';
-
-    echo '<h1>User Registration</h1><hr><br>';
+    echo '<form><div class="containerLogin"><h1>User Registration</h1><hr><br>';
     inputFeild("fName", "First Name", "text", "Please enter your first name");
     inputFeild("lName", "Last Name", "text", "Please enter your last name");
     inputFeild("username", "Username", "text", "Please enter your Username");
@@ -48,9 +45,7 @@
     inputFeild("postCode", "Postcode", "text", "Please enter your postcode");
     inputFeild("psw", "Password", "password", "Please enter your Password");
     inputFeild("psw-repeat", "Re-enter Password", "password", "Please re-enter your Password");
-
-    echo '</div>';
-    echo '</form>';
+    echo '</div></form>';
 
     include 'footer.php';
     ?>

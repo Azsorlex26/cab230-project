@@ -18,17 +18,11 @@
 
     include 'navBar.php';
 
-    echo '<form>';
-    echo '<div class="containerLogin">';
-
-    echo '<h1>Log In</h1><hr><br>';
+    echo '<form><div class="containerLogin"><h1>Log In</h1><hr><br>';
     inputFeild("username", "Username", "text", "Please enter your Username");
     inputFeild("psw", "Password", "password", "Please enter your Password");
     inputFeild("psw-repeat", "Re-enter Password", "password", "Please re-enter your Password");
-    echo '<br><br><button type="submit" class="signUpButton">Log In</button>';
-
-    echo '</div>';
-    echo '</form>';
+    echo '<br><br><button type="submit" class="signUpButton">Log In</button></div></form>';
 
     include 'footer.php';
     ?>

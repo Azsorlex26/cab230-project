@@ -137,7 +137,8 @@ li a:hover {
     top: 15%;
 }
 
-.footer {
+
+/*.footer {
     position: fixed;
     left: 0px;
     bottom: 0px;
@@ -145,19 +146,19 @@ li a:hover {
     background-color: #c8e0e6;
     text-align: center;
     width: 100%;
-}
+}*/
 
-
-/*.footer { This is the other way of doing the footer
+.footer {
+    /*This is the other way of doing the footer*/
     position: relative;
     clear: both;
-    left: -8px;
-    bottom: -8px;
+    right: 8px;
+    top: 8px;
     padding: 1px 8px;
-	background-color: #c8e0e6;
+    background-color: #c8e0e6;
     text-align: center;
-	width: 100%;
-}*/
+    width: 100%;
+}
 
 
 /* Geolocation button */

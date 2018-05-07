@@ -1,6 +1,5 @@
 var map;
-
-SampleResult = "SampleResultsPage.php";
+var SampleResult = "SampleResultsPage.php";
 
 function initMap() {
     var myLatLng = { lat: -27.4775, lng: 153.0285 };
