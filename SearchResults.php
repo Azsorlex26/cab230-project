@@ -30,6 +30,7 @@
         result($hotspot.title, $hotspot.description);
     }
     */
+    
     result("Brisbane Square Library Wifi", "This is a really useful hotspot to have because...");
     result("City Botanic Gardens Wifi", "This is really, really convenient to have because...");
     result("Hamilton Library Wifi", "I can use this hotspot to check my emails and other...");
