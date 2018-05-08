@@ -19,7 +19,7 @@
 
     include 'navBar.php';
 
-    //Accessing data from DB
+    /*//Accessing data from DB
     $pdo = new PDO('mysql:host=localhost;dbname=test', 'admin', 'secret!');
     $stmt = $pdo->prepare('SELECT * FROM Customers WHERE firstname = :firstname');
     $stmt->bindValue(':firstname', $_GET['firstname']);
@@ -27,7 +27,6 @@
 
     echo '<div class="center_block">'; #Another one of those sections where the title is based on the database
     echo '<h1>*dynamic title*</h1>';
-    /*
     foreach ($stmt as $review) {
         result($review.title, $review.description);
     }
