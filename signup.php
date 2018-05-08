@@ -47,7 +47,7 @@
     inputFeild("psw-repeat", "Re-enter Password", "password", "Please re-enter your Password");
     echo '</div></form>';
 
-    include 'footer.php';
+    include 'fixedfooter.php';
     ?>
 </body>
 

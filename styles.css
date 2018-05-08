@@ -137,8 +137,7 @@ li a:hover {
     top: 15%;
 }
 
-
-/*.footer {
+.fixedfooter {
     position: fixed;
     left: 0px;
     bottom: 0px;
@@ -146,10 +145,9 @@ li a:hover {
     background-color: #c8e0e6;
     text-align: center;
     width: 100%;
-}*/
+}
 
-.footer {
-    /*This is the other way of doing the footer*/
+.relativefooter {
     position: relative;
     clear: both;
     right: 8px;

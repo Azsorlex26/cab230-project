@@ -38,7 +38,7 @@
     echo '</div>';
 
     include 'map.php';
-    include 'footer.php';
+    include 'relativefooter.php';
     ?>
 </body>
 

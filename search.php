@@ -46,7 +46,7 @@
         <input class="geoButton" type="button" value="Search Location" onclick="window.location.href='searchResults.php'" />
     </form>
 
-    <?php include 'footer.php'; ?>
+    <?php include 'fixedfooter.php'; ?>
 </body>
 
 </html>
