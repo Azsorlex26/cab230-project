@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="styles.css">
-    <script src="Javascript.js"></script>
+    <script src="map.js"></script>
     <title>Sample Results</title>
     <!-- The title will carry over from the search string of the previous page (hopefully) -->
 </head>
