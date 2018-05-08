@@ -1,6 +1,6 @@
 <div id="map">
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDKlKV9TS-T99AmtHi_h2XXcx2bZ82MRUc&callback=initMap"></script>
-</div>'
+</div>
 
 <?php
 /*
