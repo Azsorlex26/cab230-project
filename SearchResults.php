@@ -19,11 +19,18 @@
     
     include 'navBar.php';
 
-    echo '<div class="result_block">';
-    result("Brisbane Square Library Wifi", "This is a really useful hotspot to have because...");
-    result("City Botanic Gardens Wifi", "This is really, really convenient to have because...");
-    result("Hamilton Library Wifi", "I can use this hotspot to check my emails and other...");
+    //How to access data from the DB
+    $pdo = new PDO('mysql:host=localhost;dbname=test', 'admin', 'secret!');
+    $stmt = $pdo->prepare('SELECT * FROM Customers WHERE firstname = :firstname');
+    $stmt->bindValue(':firstname', $_GET['firstname']);
+    $stmt->execute();
 
+    echo '<div class="result_block">';
+    /*
+    foreach ($stmt as $hotspot) {
+        result($hotspot.title, $hotspot.description);
+    }
+    */
     result("Brisbane Square Library Wifi", "This is a really useful hotspot to have because...");
     result("City Botanic Gardens Wifi", "This is really, really convenient to have because...");
     result("Hamilton Library Wifi", "I can use this hotspot to check my emails and other...");
