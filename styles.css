@@ -267,11 +267,13 @@ input[type=password],
 
 .result h3 {
     text-align: center;
+    color: black;
 }
 
 .result p {
     font-size: 17px;
     text-align: justify;
+    color: black;
 }
 
 #map {

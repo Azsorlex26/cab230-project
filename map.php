@@ -3,8 +3,10 @@
 </div>
 
 <?php
+$pdo = new PDO('mysql:host=localhost;dbname=cab230_db', 'root', 'Secret!');
+$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
 function execute($stmt) {
-    $stmt->execute();
     $initialised = false;
     foreach ($stmt as $marker) {
         $name = $marker['name'];
@@ -20,7 +22,7 @@ function execute($stmt) {
 }
 
 function allMarkers() {
-    $stmt = $pdo->prepare('SELECT name, latitude, longitude FROM hotspots;');
+    $stmt = $pdo->query('SELECT name, latitude, longitude FROM hotspots;');
     execute($stmt);
 }
 
@@ -29,10 +31,7 @@ function oneMarker($latitude, $longitude) {
                           'WHERE latitude = :lat AND longitude = :long;');
     $stmt->bindValue(':lat', $latitude);
     $stmt->bindValue(':long', $longitude);
+    $stmt->execute();
     execute($stmt);
 }
-
-$pdo = new PDO('mysql:host=localhost;dbname=cab230_db', 'root', 'Secret!');
-$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
 ?>

@@ -19,6 +19,8 @@
 
     include 'navBar.php';
 
+    echo $_GET['title'];
+
     /*//Accessing data from DB
     $pdo = new PDO('mysql:host=localhost;dbname=test', 'admin', 'secret!');
     $stmt = $pdo->prepare('SELECT * FROM Customers WHERE firstname = :firstname');
@@ -38,6 +40,7 @@
     echo '</div>';
 
     include 'map.php';
+
     include 'relativefooter.php';
     ?>
 </body>

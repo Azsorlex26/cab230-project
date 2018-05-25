@@ -12,9 +12,10 @@
 <body>
     <?php
     function result($title, $description) {
-        echo '<div class="result" name="result" onclick="window.location=SampleResult;">'; //Still require a javascript variable to link pages. idk why.
+        echo '<a href="SampleResultsPage.php?title=' . $title .'" class="result">';
+        echo '<div>';
         echo "<h3>$title</h3>";
-        echo "<p>$description</p></div>";
+        echo "<p>$description</p></div></a>";
     }
     
     include 'navBar.php';
@@ -24,7 +25,7 @@
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $q1 = $pdo->query('SELECT name FROM hotspots;');
     
-    echo '<form class="result_block" method="POST">';
+    echo '<div class="result_block">';
     
     foreach ($q1 as $hotspot) {
         $q2 = $pdo->prepare('SELECT description '.
@@ -43,7 +44,7 @@
         }
     }
 
-    echo '</form>';
+    echo '</div>';
 
     include 'map.php';
     allMarkers();
