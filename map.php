@@ -3,14 +3,36 @@
 </div>
 
 <?php
-/*
-$pdo = new PDO('mysql:host=localhost;dbname=test', 'admin', 'secret!');
-$stmt = $pdo->prepare('SELECT * FROM Customers WHERE firstname = :firstname');
-$stmt->bindValue(':firstname', $_GET['firstname']);
-$stmt->execute();
-
-foreach ($stmt as $marker) {
-    addMarker($marker.title, $marker.LatLng);
+function execute($stmt) {
+    $stmt->execute();
+    $initialised = false;
+    foreach ($stmt as $marker) {
+        $name = $marker['name'];
+        $lat = $marker['latitude'];
+        $lng = $marker['longitude'];
+        if ($initialised) {
+            echo "<script>addMarker($name, $lat, $lng);</script>";
+        } else {
+            echo "<script>initMap($lat, $lng);</script>";
+            $initialised = true;
+        }
+    }
 }
-*/
+
+function allMarkers() {
+    $stmt = $pdo->prepare('SELECT name, latitude, longitude FROM hotspots;');
+    execute($stmt);
+}
+
+function oneMarker($latitude, $longitude) {
+    $stmt = $pdo->prepare('SELECT name, latitude, longitude FROM hotspots '.
+                          'WHERE latitude = :lat AND longitude = :long;');
+    $stmt->bindValue(':lat', $latitude);
+    $stmt->bindValue(':long', $longitude);
+    execute($stmt);
+}
+
+$pdo = new PDO('mysql:host=localhost;dbname=cab230_db', 'root', 'Secret!');
+$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
 ?>

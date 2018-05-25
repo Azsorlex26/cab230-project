@@ -2,17 +2,25 @@ var map;
 var SampleResult = "SampleResultsPage.php";
 
 function initMap() {
-    var myLatLng = { lat: -27.4775, lng: 153.0285 };
+    /*var myLatLng = { lat: $lat, lng: $lng };
+
+    map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 14,
+        center: myLatLng
+    });*/
+}
+
+function initMap(latitude, longitude) {
+    var myLatLng = { lat: latitude, lng: longitude };
 
     map = new google.maps.Map(document.getElementById('map'), {
         zoom: 14,
         center: myLatLng
     });
-
-    addMarker('First item in the DB', myLatLng);
 }
 
-function addMarker(title, myLatLng) {
+function addMarker(title, latitude, longitude) {
+    var myLatLng = { lat: latitude, lng: longitude };
     var marker = new google.maps.Marker({
         position: myLatLng,
         map: map,

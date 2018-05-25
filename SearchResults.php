@@ -12,7 +12,7 @@
 <body>
     <?php
     function result($title, $description) {
-        echo '<div class="result" name="result" onclick="window.location=SampleResult;">'; #Still require a javascript variable to link pages. idk why.
+        echo '<div class="result" name="result" onclick="window.location=SampleResult;">'; //Still require a javascript variable to link pages. idk why.
         echo "<h3>$title</h3>";
         echo "<p>$description</p></div>";
     }
@@ -24,7 +24,7 @@
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $q1 = $pdo->query('SELECT name FROM hotspots;');
     
-    echo '<div class="result_block">';
+    echo '<form class="result_block" method="POST">';
     
     foreach ($q1 as $hotspot) {
         $q2 = $pdo->prepare('SELECT description '.
@@ -42,14 +42,11 @@
             result($hotspot['name'], "No reviews yet!");
         }
     }
-    /*
-    result("Brisbane Square Library Wifi", "This is a really useful hotspot to have because...");
-    result("City Botanic Gardens Wifi", "This is really, really convenient to have because...");
-    result("Hamilton Library Wifi", "I can use this hotspot to check my emails and other...");
-    */
-    echo '</div></form>';
+
+    echo '</form>';
 
     include 'map.php';
+    allMarkers();
     include 'relativefooter.php';
     ?>
 </body>
