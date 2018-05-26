@@ -13,8 +13,7 @@
     <?php
     function result($title, $description) {
         echo '<a href="SampleResultsPage.php?title=' . $title .'" class="result">';
-        echo '<div>';
-        echo "<h3>$title</h3>";
+        echo "<div><h3>$title</h3>";
         echo "<p>$description</p></div></a>";
     }
     
@@ -23,7 +22,7 @@
     //How to access data from the DB
     $pdo = new PDO('mysql:host=localhost;dbname=cab230_db', 'root', 'Secret!');
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $q1 = $pdo->query('SELECT name FROM hotspots;');
+    $q1 = $pdo->query('SELECT * FROM hotspots;');
     
     echo '<div class="result_block">';
     
@@ -45,9 +44,14 @@
     }
 
     echo '</div>';
-
     include 'map.php';
     allMarkers();
+    /*foreach ($q1 as $hotspot) {
+        $name = $hotspot['name'];
+        $latitude = $hotspot['latitude'];
+        $longitude = $hotspot['longitude'];
+        echo '<script language="javascript">' . "addMarker($name, $latitude, $longitude);</script>";
+    }*/
     include 'relativefooter.php';
     ?>
 </body>

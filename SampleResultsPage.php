@@ -50,7 +50,7 @@
                             'WHERE name = :name;');
     $coords->bindValue(':name', $name);
     $coords->execute();
-    oneMarker($coords);
+    addMarkers($coords);
 
     include 'relativefooter.php';
     ?>
