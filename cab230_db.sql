@@ -81,12 +81,12 @@ DROP TABLE IF EXISTS `users`;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `users` (
   `username` varchar(32) COLLATE utf8_bin NOT NULL,
-  `salt` varchar(100) COLLATE utf8_bin NOT NULL,
-  `password` varchar(100) COLLATE utf8_bin NOT NULL,
-  `firstName` varchar(100) COLLATE utf8_bin NOT NULL,
-  `lastName` varchar(100) COLLATE utf8_bin NOT NULL,
+  `salt` varchar(70) COLLATE utf8_bin NOT NULL,
+  `password` varchar(70) COLLATE utf8_bin NOT NULL,
+  `fName` varchar(100) COLLATE utf8_bin NOT NULL,
+  `lName` varchar(100) COLLATE utf8_bin NOT NULL,
   `email` varchar(100) COLLATE utf8_bin NOT NULL,
-  `state` varchar(50) COLLATE utf8_bin NOT NULL,
+  `state` varchar(18) COLLATE utf8_bin NOT NULL,
   `postcode` int(4) NOT NULL,
   PRIMARY KEY (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
@@ -110,4 +110,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-26 20:39:36
+-- Dump completed on 2018-05-26 22:49:45

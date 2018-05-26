@@ -41,15 +41,16 @@
         <div class="containerLogin">
         <h1>User Registration</h1><hr><br>
     <?php
+    
     inputField("fName", "First Name", "text", false);
     inputField("lName", "Last Name", "text", false);
     inputField("username", "Username", "text", false);
     inputField("email", "email", "text", false);
     inputField("state", "State", "", true);
-
     inputField("postCode", "Postcode", "text", false);
     inputField("psw", "Password", "password", false);
     inputField("psw-repeat", "Re-enter Password", "password", false);
+    
     ?>
     <button type="submit" class="signUpButton" name="signup">Sign Up</button>
     </div>
