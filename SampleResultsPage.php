@@ -19,27 +19,38 @@
 
     include 'navBar.php';
 
-    echo $_GET['title'];
+    $name = $_GET['title'];
 
-    /*//Accessing data from DB
-    $pdo = new PDO('mysql:host=localhost;dbname=test', 'admin', 'secret!');
-    $stmt = $pdo->prepare('SELECT * FROM Customers WHERE firstname = :firstname');
-    $stmt->bindValue(':firstname', $_GET['firstname']);
-    $stmt->execute();*/
+    //Accessing data from DB
+    $pdo = new PDO('mysql:host=localhost;dbname=cab230_db', 'root', 'Secret!');
+    $stmt = $pdo->prepare('SELECT title, description FROM reviews '.
+                          'WHERE name = :name;');
+    $stmt->bindValue(':name', $_GET['title']);
+    $stmt->execute();
 
     echo '<div class="center_block">'; #Another one of those sections where the title is based on the database
-    echo '<h1>*dynamic title*</h1>';
-    /*
-    foreach ($stmt as $review) {
-        result($review.title, $review.description);
+    echo "<h1>$name</h1>";
+    
+    if ($stmt->rowCount() > 0) {
+        foreach ($stmt as $review) {
+            review($review['title'], $review['description']);
+        }
+    } else {
+        review("No reviews yet", "Be the first to write one!");
     }
-    */
+    /*
     review("Handy wifi point", "This is a really useful hotspot to have because I can use my phone to search up details and facts about books both without eating into my own data and moving to one of the library computers. Really useful to have.");
     review("Convenient", "*you get the idea*");
-    review("Really, really slow!", "*you get the idea*");
+    review("Really, really slow!", "*you get the idea*");*/
     echo '</div>';
 
     include 'map.php';
+    $coords = $pdo->prepare('SELECT name, latitude, longitude '.
+                            'FROM hotspots '.
+                            'WHERE name = :name;');
+    $coords->bindValue(':name', $name);
+    $coords->execute();
+    oneMarker($coords);
 
     include 'relativefooter.php';
     ?>

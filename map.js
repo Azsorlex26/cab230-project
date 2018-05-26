@@ -2,7 +2,7 @@ var map;
 var SampleResult = "SampleResultsPage.php";
 
 function initMap() {
-    /*var myLatLng = { lat: $lat, lng: $lng };
+    /*var myLatLng = { lat: -27, lng: 155 };
 
     map = new google.maps.Map(document.getElementById('map'), {
         zoom: 14,

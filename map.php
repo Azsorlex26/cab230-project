@@ -1,12 +1,8 @@
-<div id="map">
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDKlKV9TS-T99AmtHi_h2XXcx2bZ82MRUc&callback=initMap"></script>
-</div>
-
 <?php
 $pdo = new PDO('mysql:host=localhost;dbname=cab230_db', 'root', 'Secret!');
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-function execute($stmt) {
+function oneMarker($stmt) {
     $initialised = false;
     foreach ($stmt as $marker) {
         $name = $marker['name'];
@@ -23,15 +19,10 @@ function execute($stmt) {
 
 function allMarkers() {
     $stmt = $pdo->query('SELECT name, latitude, longitude FROM hotspots;');
-    execute($stmt);
-}
-
-function oneMarker($latitude, $longitude) {
-    $stmt = $pdo->prepare('SELECT name, latitude, longitude FROM hotspots '.
-                          'WHERE latitude = :lat AND longitude = :long;');
-    $stmt->bindValue(':lat', $latitude);
-    $stmt->bindValue(':long', $longitude);
-    $stmt->execute();
-    execute($stmt);
+    oneMarker($stmt);
 }
 ?>
+
+<div id="map">
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDKlKV9TS-T99AmtHi_h2XXcx2bZ82MRUc&callback=initMap"></script>
+</div>
