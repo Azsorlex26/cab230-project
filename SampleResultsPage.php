@@ -45,12 +45,7 @@
     echo '</div>';
 
     include 'map.php';
-    $coords = $pdo->prepare('SELECT name, latitude, longitude '.
-                            'FROM hotspots '.
-                            'WHERE name = :name;');
-    $coords->bindValue(':name', $name);
-    $coords->execute();
-    addMarkers($coords);
+    oneMarker($name);
 
     include 'relativefooter.php';
     ?>

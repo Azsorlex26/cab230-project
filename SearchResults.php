@@ -19,13 +19,17 @@
     
     include 'navBar.php';
 
+    $name = $_POST["search"];
+
     //How to access data from the DB
     $pdo = new PDO('mysql:host=localhost;dbname=cab230_db', 'root', 'Secret!');
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $q1 = $pdo->query('SELECT * FROM hotspots;');
-    
+    $q1 = $pdo->prepare('SELECT name FROM hotspots '.
+                        'WHERE name LIKE :name;');
+    $q1->bindValue(':name', "%$name%");
+    $q1->execute();
+
     echo '<div class="result_block">';
-    
     foreach ($q1 as $hotspot) {
         $q2 = $pdo->prepare('SELECT description '.
                             'FROM reviews '.
@@ -42,17 +46,15 @@
             result($hotspot['name'], "No reviews yet!");
         }
     }
-
     echo '</div>';
+
     include 'map.php';
     allMarkers();
-    /*foreach ($q1 as $hotspot) {
-        $name = $hotspot['name'];
-        $latitude = $hotspot['latitude'];
-        $longitude = $hotspot['longitude'];
-        echo '<script language="javascript">' . "addMarker($name, $latitude, $longitude);</script>";
-    }*/
-    include 'relativefooter.php';
+    if ($q1->rowCount() >= 4) {
+        include 'relativefooter.php';
+    } else {
+        include 'fixedfooter.php';
+    }
     ?>
 </body>
 

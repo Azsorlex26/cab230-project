@@ -9,7 +9,6 @@ function initMap() {
 }
 
 function addMarker(markName, markLat, markLng) {
-    alert("Test");
     var myLatLng = { lat: markLat, lng: markLng };
     var marker = new google.maps.Marker({
         position: myLatLng,

@@ -1,21 +1,27 @@
-<!DOCTYPE html>
-<head><script src="map.js"></script></head>
-<div id="map" onload=""></div>
+<script src="map.js"></script>
+<div id="map"></div>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDKlKV9TS-T99AmtHi_h2XXcx2bZ82MRUc&callback=initMap"></script>
 
 <?php
 function allMarkers() {
-    addMarkers('SELECT name, latitude, longitude FROM hotspots;');
+    addMarkers('SELECT name, latitude, longitude FROM hotspots;', false, "");
 }
 
 function oneMarker($name) {
-
+    addMarkers('SELECT name, latitude, longitude FROM hotspots '.
+               'WHERE name = :name;', true, $name);
 }
 
-function addMarkers($query) {
+function addMarkers($query, $prepare, $name) {
     $pdo = new PDO('mysql:host=localhost;dbname=cab230_db', 'root', 'Secret!');
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $stmt = $pdo->query($query);
+    if ($prepare) {
+        $stmt = $pdo->prepare($query);
+        $stmt->bindValue(':name', $name);
+        $stmt->execute();
+    } else {
+        $stmt = $pdo->query($query);
+    }
     foreach ($stmt as $marker) {
         ?>
         <script>
