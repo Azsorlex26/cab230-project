@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <?php include 'navBar.php';?>
+    <?php include 'navBar.php'; ?>
 
     <form method="POST" action="SearchResults.php">
         <div class="searchContainer">

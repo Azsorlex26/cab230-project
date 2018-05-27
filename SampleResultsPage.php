@@ -12,9 +12,15 @@
 <body>
     <?php
     function review($title, $review) {
-        echo '<div class="review">';
-        echo "<h3>$title</h3>";
-        echo "<p>$review</p></div>";
+        if ($title != "No reviews yet") {
+            echo '<div class="review">';
+            echo "<h3>$title</h3>";
+            echo "<p>$review</p></div>";
+        } else {
+            echo '<a class="review" href="writeReview.php"><div>';
+            echo "<h3>$title</h3>";
+            echo "<p>$review</p></div></a>";
+        }
     }
 
     include 'navBar.php';
@@ -29,25 +35,24 @@
     $stmt->execute();
 
     echo '<div class="center_block">'; #Another one of those sections where the title is based on the database
-    echo "<h1>$name</h1>";
-    
+    echo "<h1>$name</h1>";   
     if ($stmt->rowCount() > 0) {
         foreach ($stmt as $review) {
             review($review['title'], $review['description']);
         }
     } else {
-        review("No reviews yet", "Be the first to write one!");
+        review("No reviews yet", "Click here to be the first!");
     }
-    /*
-    review("Handy wifi point", "This is a really useful hotspot to have because I can use my phone to search up details and facts about books both without eating into my own data and moving to one of the library computers. Really useful to have.");
-    review("Convenient", "*you get the idea*");
-    review("Really, really slow!", "*you get the idea*");*/
     echo '</div>';
 
     include 'map.php';
     oneMarker($name);
 
-    include 'relativefooter.php';
+    if ($stmt->rowCount() > 5) {
+        include 'relativefooter.php';
+    } else {
+        include 'fixedfooter.php';
+    }
     ?>
 </body>
 

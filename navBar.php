@@ -6,7 +6,14 @@
         }
         createItem("left", "search.php", "Search Page");
         createItem("right", "signup.php", "Sign Up");
-        createItem("right", "signin.php", "Sign In");
+        session_start();
+        if (isset($_SESSION['user'])) {
+            $name = $_SESSION['user'];
+            createItem("right", "signout.php", "Sign Out");
+            echo '<li><a class=right>Signed in as: '.$name.'</li>';
+        } else {
+            createItem("right", "signin.php", "Sign In");
+        }
         ?>
     </ul>
 </div>

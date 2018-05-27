@@ -306,6 +306,7 @@ input[type=password],
 
 .review {
     float: left;
+    color: black;
     border-style: solid;
     border-width: 1px;
     border-color: #E0E0E0;

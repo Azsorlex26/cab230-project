@@ -60,33 +60,41 @@
     if (isset($_POST['fName']) && isset($_POST['lName']) &&
         isset($_POST['username']) && isset($_POST['email']) &&
         isset($_POST['state']) && isset($_POST['postCode']) &&
-        isset($_POST['psw'])) {
+        isset($_POST['psw']) && isset($_POST['psw-repeat'])) {
 
-            $pdo = new PDO('mysql:host=localhost;dbname=cab230_db', 'root', 'Secret!');
-            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $q1 = $pdo->prepare('INSERT INTO users VALUES('.
-                                ':username,'.
-                                'SHA2(:username, 0),'.
-                                'SHA2(CONCAT(:password, SHA2(:username, 0)), 0),'.
-                                ':fName,'.
-                                ':lName,'.
-                                ':email,'.
-                                ':state,'.
-                                ':postCode);');
-            $q1->bindValue(':username', $_POST['username']);
-            $q1->bindValue(':password', $_POST['psw']);
-            $q1->bindValue(':fName', $_POST['fName']);
-            $q1->bindValue(':lName', $_POST['lName']);
-            $q1->bindValue(':email', $_POST['email']);
-            $q1->bindValue(':state', $_POST['state']);
-            $q1->bindValue(':postCode', $_POST['postCode']);
-            try {
-                $q1->execute();
-            } catch (PDOException $e) {
-                echo '<script>alert("That username has already been taken. Try another one.")</script>';
-            } finally {
-                $_POST = array();
+            if ($_POST['psw'] == $_POST['psw-repeat']) {
+                $pdo = new PDO('mysql:host=localhost;dbname=cab230_db', 'root', 'Secret!');
+                $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $q1 = $pdo->prepare('INSERT INTO users VALUES('.
+                                    ':username,'.
+                                    'SHA2(:username, 0),'.
+                                    'SHA2(CONCAT(:password, SHA2(:username, 0)), 0),'.
+                                    ':fName,'.
+                                    ':lName,'.
+                                    ':email,'.
+                                    ':state,'.
+                                    ':postCode);');
+                $q1->bindValue(':username', $_POST['username']);
+                $q1->bindValue(':password', $_POST['psw']);
+                $q1->bindValue(':fName', $_POST['fName']);
+                $q1->bindValue(':lName', $_POST['lName']);
+                $q1->bindValue(':email', $_POST['email']);
+                $q1->bindValue(':state', $_POST['state']);
+                $q1->bindValue(':postCode', $_POST['postCode']);
+                try {
+                    $q1->execute();                   
+                    echo '<script>alert("Account created successfully.")</script>';
+                } catch (PDOException $e) {
+                    if (strpos($_POST['email'], '@') && strpos($_POST['email'], '.')) {
+                        echo '<script>alert("Something went wrong. Either the username is already taken, or the postcode was invalid.")</script>';
+                    } else {
+                        echo '<script>alert("Email was invalid.");</script>';
+                    }
+                }
+            } else {
+                echo '<script>alert("Password feilds do not match.")</script>';
             }
+            $_POST = array(); //This doesn't work for some reason.
     }
     include 'fixedfooter.php';
     ?>
