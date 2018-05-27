@@ -50,17 +50,17 @@ DROP TABLE IF EXISTS `reviews`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `reviews` (
-  `id` int(255) NOT NULL AUTO_INCREMENT,
-  `title` varchar(64) COLLATE utf8_bin NOT NULL,
-  `description` varchar(512) COLLATE utf8_bin NOT NULL,
+  `reviewID` int(255) NOT NULL AUTO_INCREMENT,
+  `title` varchar(128) COLLATE utf8_bin NOT NULL,
+  `description` varchar(1024) COLLATE utf8_bin NOT NULL,
   `username` varchar(32) COLLATE utf8_bin NOT NULL,
   `name` varchar(48) COLLATE utf8_bin NOT NULL,
-  PRIMARY KEY (`id`),
+  PRIMARY KEY (`reviewID`),
   KEY `username` (`username`),
   KEY `name` (`name`),
   CONSTRAINT `reviews_ibfk_1` FOREIGN KEY (`username`) REFERENCES `users` (`username`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `reviews_ibfk_2` FOREIGN KEY (`name`) REFERENCES `hotspots` (`name`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -110,4 +110,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-26 22:49:45
+-- Dump completed on 2018-05-27 15:06:19

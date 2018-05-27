@@ -34,7 +34,7 @@
         $q2 = $pdo->prepare('SELECT description '.
                             'FROM reviews '.
                             'WHERE name = :name '.
-                            'ORDER BY id DESC '.
+                            'ORDER BY reviewID DESC '.
                             'LIMIT 1;');
         $q2->bindValue(':name', $hotspot['name']);
         $q2->execute();

@@ -52,7 +52,7 @@
     inputField("psw-repeat", "Re-enter Password", "password", false);
     
     ?>
-    <button type="submit" class="signUpButton" name="signup">Sign Up</button>
+    <button type="submit" class="submitButton" name="signup">Sign Up</button>
     </div>
     </form>
     <?php

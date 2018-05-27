@@ -9,11 +9,11 @@
 
 <body>
     <?php
-    function inputFeild($name, $title, $type, $placeholder) {
+    function inputFeild($name, $title, $type) {
         echo "<label for=$name>";
         echo "<b>$title</b>";
         echo '</label><br>';
-        echo "<input type=$type placeholder=$placeholder name=$name required id=$name><br><br>";
+        echo "<input type=$type name=$name required id=$name><br><br>";
     }
 
     include 'navBar.php';
@@ -23,11 +23,11 @@
         <div class="containerLogin">
             <h1>Log In</h1><hr><br>
     <?php
-    inputFeild("username", "Username", "text", "Please enter your Username");
-    inputFeild("psw", "Password", "password", "Please enter your Password");
+    inputFeild("username", "Username", "text");
+    inputFeild("psw", "Password", "password");
     ?>
     <br><br>
-    <button type="submit" class="signUpButton" name="signin">Log In</button>
+    <button type="submit" class="submitButton" name="signin">Log In</button>
     </div>
     </form>
 
