@@ -1,7 +1,3 @@
-<script src="map.js"></script>
-<div id="map"></div>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDKlKV9TS-T99AmtHi_h2XXcx2bZ82MRUc&callback=initMap"></script>
-
 <?php
 function allMarkers() {
     addMarkers('SELECT name, latitude, longitude FROM hotspots;', false, "");
@@ -22,15 +18,30 @@ function addMarkers($query, $prepare, $name) {
     } else {
         $stmt = $pdo->query($query);
     }
+    ?>
+    <script>var data = new Array();</script>
+    <?php
+    $count = 0;
     foreach ($stmt as $marker) {
         ?>
         <script>
+            var count = <?php echo $count ?>;
             var name = "<?php echo $marker['name'] ?>";
             var lat = <?php echo $marker['latitude'] ?>;
             var lng = <?php echo $marker['longitude'] ?>;
-            addMarker(name, lat, lng);
+            data[count] = new Array(name, lat, lng);
         </script>
         <?php
+        $count++;
     }
 }
 ?>
+
+<script src="map.js"></script>
+<div id="map"></div>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDKlKV9TS-T99AmtHi_h2XXcx2bZ82MRUc&callback=initMap"></script>
+<script>
+    for (var i = 0; i < data.length; i++) {
+        addMarker(data[i][0], data[i][1], data[i][2]);
+    }
+</script>
