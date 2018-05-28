@@ -199,7 +199,7 @@ input[type=password],
 
 .searchContainer {
     position: absolute;
-    width: 31%;
+    width: 30%;
     height: 20px;
     top: 50%;
     left: 50%;
@@ -212,7 +212,7 @@ input[type=password],
     width: 60%;
 }
 
-.submitButton {
+.searchContainer submitButton {
     float: right;
     height: 30px;
     width: 100%;
