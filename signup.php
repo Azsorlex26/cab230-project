@@ -81,15 +81,15 @@
                 $q1->bindValue(':email', $_POST['email']);
                 $q1->bindValue(':state', $_POST['state']);
                 $q1->bindValue(':postCode', $_POST['postCode']);
-                try {
-                    $q1->execute();                   
-                    echo '<script>alert("Account created successfully.")</script>';
-                } catch (PDOException $e) {
-                    if (strpos($_POST['email'], '@') && strpos($_POST['email'], '.')) {
+                if (strpos($_POST['email'], '@') && strpos($_POST['email'], '.')) {
+                    try {
+                        $q1->execute();                   
+                        echo '<script>alert("Account created successfully.")</script>';
+                    } catch (PDOException $e) {
                         echo '<script>alert("Something went wrong. Either the username is already taken, or the postcode was invalid.")</script>';
-                    } else {
-                        echo '<script>alert("Email was invalid.");</script>';
                     }
+                } else {
+                    echo '<script>alert("Email was invalid.");</script>';
                 }
             } else {
                 echo '<script>alert("Password feilds do not match.")</script>';
