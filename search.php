@@ -14,7 +14,7 @@
     <form method="POST" action="SearchResults.php">
         <div class="searchContainer">
             <input type="text" name="search" placeholder="search here...">
-            <input class="searchButton" type="submit" value="Search" />
+            <input name="searchButton" type="submit" value="Search" />
         </div>
     </form>
 
