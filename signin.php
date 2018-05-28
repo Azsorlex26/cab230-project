@@ -45,7 +45,7 @@
         if ($query->rowCount() > 0) {
             session_start();
             $_SESSION['user'] = $_POST['username'];
-            header('Location:  http://localhost/applications/cab230-project/search.php');
+            header('Location:  http://localhost/applications/cab230-project/index.php');
             exit();
         } else {
             echo '<script>alert("Incorrect username or password.");</script>';
