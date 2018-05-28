@@ -207,18 +207,10 @@ input[type=password],
     margin-left: -15%;
 }
 
-.searchContainer search {
-    float: left;
-    width: 60%;
-}
-
-.searchContainer submitButton {
-    float: right;
-    height: 30px;
-    width: 60%;
-    border-radius: 12px;
-    font-size: 20px;
-    background-color: #00ff00;
+.searchButton {
+	float: left;
+    width: 100%;
+    font-size: 16px;
 }
 
 
