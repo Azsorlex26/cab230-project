@@ -197,6 +197,15 @@ input[type=password],
 
 /* container for search bar */
 
+.submitButton {
+    float: right;
+    height: 30px;
+    width: 100%;
+    border-radius: 12px;
+    font-size: 20px;
+    background-color: #00ff00;
+}
+
 .searchContainer {
     position: absolute;
     width: 30%;
@@ -208,9 +217,11 @@ input[type=password],
 }
 
 .searchButton {
-	float: left;
+    float: left;
     width: 100%;
     font-size: 16px;
+    border-radius: 12px;
+    background-color: #00ff00;
 }
 
 

@@ -1,6 +1,0 @@
-1. Get hold of database.
-2. Rewrite code in such a way that it creates objects based on database code (Liam)
-3. Implement remaining two add-on tasks (Liam)
-4. Implement ability for users to log in and write reviews on items
-5. Make sure site is secure
-6. Write report
