@@ -25,8 +25,9 @@
     $pdo = new PDO('mysql:host=localhost;dbname=cab230_db', 'root', 'Secret!');
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $q1 = $pdo->prepare('SELECT name FROM hotspots '.
-                        'WHERE name LIKE :name;');
-    $q1->bindValue(':name', "%$name%");
+                        'WHERE LOWER(name) LIKE :name;');
+    $lowerCase = strtolower($name);
+    $q1->bindValue(':name', "%$lowerCase%");
     $q1->execute();
 
     echo '<div class="result_block">';

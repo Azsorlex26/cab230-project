@@ -33,9 +33,9 @@
 
     <?php
     if (isset($_POST['username']) && isset($_POST['psw'])) {
-        $db = new PDO('mysql:host=localhost;dbname=cab230_db', 'root', 'Secret!');
-        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $query = $db->prepare('SELECT * '.
+        $pdo = new PDO('mysql:host=localhost;dbname=cab230_db', 'root', 'Secret!');
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $query = $pdo->prepare('SELECT * '.
                               'FROM users '.
                               'WHERE username = :username '.
                               'AND password = SHA2(CONCAT(:password, salt), 0);');

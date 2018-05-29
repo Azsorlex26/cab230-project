@@ -30,6 +30,7 @@
 
     //Accessing data from DB
     $pdo = new PDO('mysql:host=localhost;dbname=cab230_db', 'root', 'Secret!');
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $stmt = $pdo->prepare('SELECT title, username, description FROM reviews '.
                           'WHERE name = :name;');
     $stmt->bindValue(':name', $_GET['title']);
