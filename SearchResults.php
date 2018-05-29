@@ -12,9 +12,13 @@
 <body>
     <?php
     function result($title, $description) {
-        echo '<a href="SampleResultsPage.php?title=' . $title .'" class="result">';
-        echo "<div><h3>$title</h3>";
-        echo "<p>$description</p></div></a>";
+        if ($description != null) {
+            echo '<a href="SampleResultsPage.php?title=' . $title .'" class="result">';
+            echo "<div><h3>$title</h3>";
+            echo "<p>$description</p></div></a>";
+        } else {
+            echo '<div class="result"><h3>'.$title.'</h3></div>';
+        }
     }
     
     include 'navBar.php';
@@ -49,7 +53,7 @@
             }
         }
     } else {
-        result("No matching results", '');
+        result("No matching results", null);
     }
     echo '</div>';
 
