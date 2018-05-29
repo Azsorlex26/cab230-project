@@ -31,21 +31,25 @@
     $q1->execute();
 
     echo '<div class="result_block">';
-    foreach ($q1 as $hotspot) {
-        $q2 = $pdo->prepare('SELECT description '.
-                            'FROM reviews '.
-                            'WHERE name = :name '.
-                            'ORDER BY reviewID DESC '.
-                            'LIMIT 1;');
-        $q2->bindValue(':name', $hotspot['name']);
-        $q2->execute();
-        if ($q2->rowCount() > 0) {
-            foreach ($q2 as $description) {
-                result($hotspot['name'], ($description['description']));
+    if ($q1->rowCount() > 0) {
+        foreach ($q1 as $hotspot) {
+            $q2 = $pdo->prepare('SELECT description '.
+                                'FROM reviews '.
+                                'WHERE name = :name '.
+                                'ORDER BY reviewID DESC '.
+                                'LIMIT 1;');
+            $q2->bindValue(':name', $hotspot['name']);
+            $q2->execute();
+            if ($q2->rowCount() > 0) {
+                foreach ($q2 as $description) {
+                    result($hotspot['name'], ($description['description']));
+                }
+            } else {
+                result($hotspot['name'], "No reviews yet!");
             }
-        } else {
-            result($hotspot['name'], "No reviews yet!");
         }
+    } else {
+        result("No matching results", '');
     }
     echo '</div>';
 
