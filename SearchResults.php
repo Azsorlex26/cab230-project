@@ -45,7 +45,7 @@
             $q2->execute();
             if ($q2->rowCount() > 0) {
                 foreach ($q2 as $description) {
-                    result($hotspot['name'], ($description['description']));
+                    result($hotspot['name'], (substr($description['description'], 0, 186).'...'));
                 }
             } else {
                 result($hotspot['name'], "No reviews yet!");
