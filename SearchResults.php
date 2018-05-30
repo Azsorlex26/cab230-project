@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="styles.css">
-    <script src="map.js"></script>
     <title>Search Results</title>
     <!-- The title will carry over from the search string of the previous page (hopefully) -->
 </head>
@@ -58,7 +57,8 @@
     echo '</div>';
 
     include 'map.php';
-    allMarkers();
+    addMarkers($name);
+
     if ($q1->rowCount() >= 4) {
         include 'relativefooter.php';
     } else {

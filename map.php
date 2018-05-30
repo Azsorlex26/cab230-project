@@ -1,26 +1,13 @@
 <?php
-function allMarkers() {
-    addMarkers('SELECT name, latitude, longitude FROM hotspots;', false, "");
-}
-
-function oneMarker($name) {
-    addMarkers('SELECT name, latitude, longitude FROM hotspots '.
-               'WHERE name = :name;', true, $name);
-}
-
-function addMarkers($query, $prepare, $name) {
+function addMarkers($name) {
     $pdo = new PDO('mysql:host=localhost;dbname=cab230_db', 'root', 'Secret!');
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    if ($prepare) {
-        $stmt = $pdo->prepare($query);
-        $stmt->bindValue(':name', $name);
-        $stmt->execute();
-    } else {
-        $stmt = $pdo->query($query);
-    }
-    ?>
-    <script>var data = new Array();</script>
-    <?php
+    $stmt = $pdo->prepare('SELECT name, latitude, longitude FROM hotspots '.
+                          'WHERE LOWER(name) LIKE :name;');
+    $lowerCase = strtolower($name);
+    $stmt->bindValue(':name', "%$lowerCase%");
+    $stmt->execute();
+    
     $count = 0;
     foreach ($stmt as $marker) {
         ?>
@@ -41,7 +28,13 @@ function addMarkers($query, $prepare, $name) {
 <div id="map"></div>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDKlKV9TS-T99AmtHi_h2XXcx2bZ82MRUc&callback=initMap"></script>
 <script>
-    for (var i = 0; i < data.length; i++) {
-        addMarker(data[i][0], data[i][1], data[i][2]);
-    }
+    var data = new Array();
+    setTimeout(
+        function(){
+            for (var i = 0; i < data.length; i++) {
+                addMarker(data[i][0], data[i][1], data[i][2]);
+            }
+        },
+        1000
+    );
 </script>

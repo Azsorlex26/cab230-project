@@ -12,6 +12,7 @@ function addMarker(markName, markLat, markLng) {
     var myLatLng = { lat: markLat, lng: markLng };
     var marker = new google.maps.Marker({
         position: myLatLng,
+        animation: google.maps.Animation.DROP,
         map: map,
         title: markName
     });
