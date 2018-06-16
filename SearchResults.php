@@ -19,7 +19,7 @@
             echo '<div class="result"><h3>'.$title.'</h3></div>';
         }
     }
-    
+
     include 'navBar.php';
 
     $name = $_POST["search"];

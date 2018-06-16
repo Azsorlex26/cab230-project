@@ -27,18 +27,18 @@
             <label for="title">
                 <b>Review title:</b>
             </label><br>
-            <?php 
+            <?php
             if (isset($_POST['review'])) {
                 echo '<input type="text" name="title" required id="title" value="'.$_POST['title'].'"><br><br>';
             } else {
                 echo '<input type="text" name="title" required id="title"><br><br>';
             }
             ?>
-        
+
             <label for="review">
                 <b>Review description:</b>
             </label><br>
-            <?php 
+            <?php
             if (isset($_POST['review'])) {
                 echo '<textarea class="review_area" name="review" rows="10" required>'.$_POST['review'].'</textarea>';
             } else {

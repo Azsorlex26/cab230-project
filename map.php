@@ -7,7 +7,7 @@ function addMarkers($name) {
     $lowerCase = strtolower($name);
     $stmt->bindValue(':name', "%$lowerCase%");
     $stmt->execute();
-    
+
     $count = 0;
     foreach ($stmt as $marker) {
         ?>

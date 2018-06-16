@@ -9,7 +9,7 @@
 
 <body>
 
-    <?php 
+    <?php
     function inputField($name, $title, $type, $state) {
         echo "<label for=$name>";
         echo "<b>$title</b>";
@@ -33,7 +33,7 @@
             <?php
         }
     }
-    
+
     include 'navBar.php';
 
     ?>
@@ -41,7 +41,7 @@
         <div class="containerLogin">
         <h1>User Registration</h1><hr><br>
     <?php
-    
+
     inputField("fName", "First Name", "text", false);
     inputField("lName", "Last Name", "text", false);
     inputField("username", "Username", "text", false);
@@ -50,7 +50,7 @@
     inputField("postCode", "Postcode", "text", false);
     inputField("psw", "Password", "password", false);
     inputField("psw-repeat", "Re-enter Password", "password", false);
-    
+
     ?>
     <button type="submit" class="submitButton" name="signup">Sign Up</button>
     </div>
@@ -83,7 +83,7 @@
                 $q1->bindValue(':postCode', $_POST['postCode']);
                 if (strpos($_POST['email'], '@') && strpos($_POST['email'], '.')) {
                     try {
-                        $q1->execute();                   
+                        $q1->execute();
                         echo '<script>alert("Account created successfully.")</script>';
                     } catch (PDOException $e) {
                         echo '<script>alert("Something went wrong. Either the username is already taken, or the postcode was invalid.")</script>';
